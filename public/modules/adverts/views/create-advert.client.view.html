@@ -1,0 +1,109 @@
+<section data-ng-controller="AdvertsController">
+    <div class="page-header">
+        <h1>Create an Advert</h1>
+    </div>
+    <div class="col-md-12">
+        <div class="alert alert-danger">
+            {{error}}
+        </div>
+        <form name="advert_add_form" class="form-horizontal" data-ng-submit="create()" autocomplete="off" novalidate>
+            <fieldset>
+                <div class="form-group" id="div_advert_title">
+                    <label class="col-sm-2 control-label" for="advert_title">Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="advert_title" data-ng-model="advert_title" name="advert_title" placeholder="Advert's Title" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="div_advert_surface" ng-class="{'has-error': articleForm.surface.$dirty && advert_add_form.surface.$invalid}">
+                        <label class="col-sm-2 control-label" for="advert_surface">Surface</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="advert_surface" data-ng-model="advert_surface" name="advert_surface" placeholder="50" required>
+                                <span class="input-group-addon">m²</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_advert_room">
+                        <label class="col-sm-2 control-label" for="advert_room">Number of room</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" id="advert_room" data-ng-model="advert_room" name="advert_room" min="1" value="5" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="div_advert_price">
+                        <label class="col-sm-2 control-label" for="advert_price">Price</label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="advert_price" data-ng-model="advert_price" name="advert_price" placeholder="500" required>
+                                <span class="input-group-addon">€</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div >
+                        <label class="col-sm-2 control-label" for="advert_energetic">Energetic</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" id="advert_energetic" data-ng-model="advert_energetic" name="advert_energetic" required>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                                <option>E</option>
+                                <option>F</option>
+                                <option>G</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="div_advert_contact">
+                        <label class="col-sm-2 control-label" for="advert_mail">Email</label>
+                        <div class="col-sm-4">
+                            <input type="email" class="form-control" id="advert_mail" data-ng-model="advert_mail" name="advert_mail" placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        </div>
+                    </div>
+                    <div id="div_advert_phone" ng-class="{'has-error': articleForm.advert_phone.$dirty && advert_add_form.advert_phone.$invalid}">
+                        <label class="col-sm-2 control-label" for="advert_phone">Phone</label>
+                        <div class="col-sm-4">
+                            <input type="tel" class="form-control" id="advert_phone" data-ng-model="advert_phone" name="advert_phone" placeholder="Phone">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="div_advert_address">
+                        <label class="col-sm-2 control-label" for="advert_address">Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="advert_address" data-ng-model="advert_address" name="advert_address" placeholder="Address">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="div_advert_zip_code">
+                        <label class="col-sm-2 control-label" for="advert_zip_code">Zip Code</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="advert_zip_code" data-ng-model="advert_zip_code" name="advert_zip_code" placeholder="Zip Code" required></input>
+                        </div>
+                    </div>
+                    <div id="div_advert_city">
+                        <label class="col-sm-2 control-label" for="advert_city">City</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="advert_city" data-ng-model="advert_city" name="advert_city" placeholder="City" required></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="advert_des">Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="advert_des" data-ng-model="advert_des" name="advert_des" rows="4" placeholder="Describe your real estaste..."></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
