@@ -41,7 +41,7 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 			$scope.description = '';
 		}, function(errorResponse) {
 		//	$location.path('adverts/' + errorResponse.data.message);
-			
+
 			$scope.error = errorResponse.data.message;
 		});
 	};
@@ -83,5 +83,7 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 			advertId: $stateParams.advertId
 		});
 	};
+
+	$scope.map = {name: 'map', url: 'modules/adverts/views/map/edit-map.client.view.html'};
 }
 ]);

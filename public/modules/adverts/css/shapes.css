@@ -1,0 +1,84 @@
+.building {
+    stroke: #808080;
+    stroke-width: 1px;
+    fill: #A9A9A9;
+    color: #A9A9A9;
+}
+
+.building.over {
+    stroke: #F5F5DC;
+    stroke-width: 1px;
+    fill: #808080;
+}
+
+.natural {
+    stroke: #007FFF;
+    stroke-width: 1px;
+    fill: #87CEEB;
+    color: #007FFF;
+}
+
+.natural.over {
+    stroke: #87CEEB;
+    stroke-width: 1px;
+    fill: #1E90FF;
+}
+
+.amenity {
+    stroke: #FF6347;
+    stroke-width: 1px;
+    fill: #FF7F50;
+    color: #FF6347;
+}
+
+.amenity.over {
+    stroke: #D3D3D3;
+    stroke-width: 1px;
+    fill: #FF6347;
+}
+
+.road {
+    stroke: lightgray;
+    stroke-width: 2px;
+    fill: none;
+    color: lightgray;
+}
+
+.shop {
+    stroke: #FF4500;
+    stroke-width: 1px;
+    fill: #FFA500;
+}
+
+.shop.over {
+    stroke: #FFA500;
+    stroke-width: 1px;
+    fill: #FF8C00;
+}
+
+.tooltip {
+        position: absolute;
+        width: 150px;
+        height: auto;
+        padding: 5px;
+        background-color: white;
+		opacity: 0.8;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+}
+
+.tooltip.hidden {
+    display: none;
+}
+
+.tooltip p {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 15px;
+    line-height: 16px;
+}
