@@ -1,6 +1,10 @@
 <section data-ng-controller="AdvertsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="advert.name"></h1>
+		<h1 data-ng-bind="advert.title"></h1>
+	</div>
+	<map-list-estate></map-list-estate>
+	<div>
+		Surface : <span data-ng-bind="advert.surface"></span>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == advert.user._id">
 		<a class="btn btn-primary" href="/#!/adverts/{{advert._id}}/edit">
