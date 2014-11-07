@@ -10,16 +10,16 @@ var validateLocalStrategyProperty = function(property) {
 	return ((this.provider !== 'local' && !this.updated) || property.length);
 };
 
-var validateLocalNumber = function(property) {
-	if (isNaN(parseFloat(property)) || !isFinite(property))
+var validateLocalNumber = function(v) {
+	if (isNaN(parseFloat(v)) || !isFinite(v))
 		return false;
-	return property > 0;
+	return v > 0;
 };
 
 /**
  * Advert Schema
  */
-var AdvertSchema = new Schema({
+var advertSchema = new Schema({
 	/*id_map: {
 		type: Number
 		//unique: true
@@ -33,12 +33,11 @@ var AdvertSchema = new Schema({
 	surface: {
 		type: Number,
 		validate: [validateLocalNumber, 'Number upper 0'],
-		match:[/[0-9]*/, 'Number required'],
 		required: 'Surface is required'
 	},
 	price: {
 		type: Number,
-		match:[/[0-9]*.?[0-9]*/, 'Number required'],
+		match:[/^[0-9]*.?[0-9]\*$/, 'Number required'],
 		validate: [validateLocalNumber, 'Number upper 0'],
 		required: 'Price is required'
 	},
@@ -77,7 +76,7 @@ var AdvertSchema = new Schema({
 	},
 	phone: {
 		type: String,
-		match: [/[0-9]{10}/, 'Please fill a phone number'],
+		match: [/^$|^\d{10}$/, 'Please enter a correct phone number'],
 		default: '',
 		required: 'Phone number is required'
 	},
@@ -92,4 +91,4 @@ var AdvertSchema = new Schema({
 	}
 });
 
-mongoose.model('Advert', AdvertSchema);
+mongoose.model('Advert', advertSchema);
