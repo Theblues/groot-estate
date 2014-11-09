@@ -7,6 +7,8 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 
 	// Create new Advert
 	$scope.create = function() {
+
+		console.log($scope.advert_title);
 		// Create new Advert object
 		var advert = new Adverts ({
 			id_map: this.advert_id_map,
@@ -22,7 +24,7 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 			phone: this.advert_phone,
 			description:this.advert_des
 		});
-		console.log(advert);
+		//	console.log(advert);
 		// Redirect after save
 		advert.$save(function(response) {
 			$location.path('adverts/' + response._id);

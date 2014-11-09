@@ -9,7 +9,6 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
 
             var tabShapes = [];
             var j = 0;
-
             var somArea = 0;
 
             var xMin = Infinity;
@@ -49,11 +48,12 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
 
             var coordiateWidth = Math.abs(xMax) + Math.abs(xMin);
             var coordiateHeight = Math.abs(yMax) + Math.abs(yMin);
-            var displayWidth = $('.container').width();
+            var displayWidth = coordiateWidth;
             var displayHeight = displayWidth * coordiateHeight / coordiateWidth;
 
             var svg = d3.select(element[0])
             .append('svg')
+            .attr('data-ng-model', 'idMap')
             .attr('width', displayWidth)
             .attr('height', displayHeight)
             .attr('class', 'map')
@@ -83,8 +83,7 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
                 if (d.getShapeType() === 'building') {
                     $('.advert-modal-add').css('visibility','visible');
                     $('#advert_id_map').val(d.getId());
-                    /*$('#advert_id_map').removeClass('ng-pristine ');
-                    $('#advert_id_map').addClass('ng-dirty');*/
+
                 }
             });
         }, function(err){console.log(err);});
