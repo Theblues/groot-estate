@@ -20,24 +20,25 @@ var validateLocalNumber = function(v) {
  * Advert Schema
  */
 var advertSchema = new Schema({
-	/*id_map: {
-		type: Number
-		//unique: true
-	},*/
+	id_map: {
+		type: String,
+		required: 'Select an estate',
+		unique: true
+	},
 	title: {
 		type: String,
 		trim: true,
-		default: '',
 		required: 'Title is required'
 	},
 	surface: {
 		type: Number,
-		validate: [validateLocalNumber, 'Number upper 0'],
+		min: [0, 'Number upper 0'],
+		//validate: [validateLocalNumber, 'Number upper 0'],
 		required: 'Surface is required'
 	},
 	price: {
 		type: Number,
-		match:[/^[0-9]*.?[0-9]\*$/, 'Number required'],
+		match:[/\d*\.?\d*/, 'Number required'],
 		validate: [validateLocalNumber, 'Number upper 0'],
 		required: 'Price is required'
 	},
@@ -52,32 +53,27 @@ var advertSchema = new Schema({
 	email: {
 		type: String,
 		trim: true,
-		default: '',
 		match:[/.+\@.+\..+/, 'Please fill a valid email address'],
 		required: 'Email is required'
 	},
 	address: {
 		type: String,
 		trim: true,
-		default: '',
 		required: 'Address is required'
 	},
 	zip_code: {
 		type: String,
 		trim: true,
-		default: '',
 		required: 'Zip Code is required'
 	},
 	city: {
 		type: String,
 		trim: true,
-		default: '',
 		required: 'City is required'
 	},
 	phone: {
 		type: String,
 		match: [/^$|^\d{10}$/, 'Please enter a correct phone number'],
-		default: '',
 		required: 'Phone number is required'
 	},
 	description: {

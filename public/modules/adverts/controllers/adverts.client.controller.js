@@ -9,6 +9,7 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 	$scope.create = function() {
 		// Create new Advert object
 		var advert = new Adverts ({
+			id_map: this.advert_id_map,
 			title: this.advert_title,
 			surface: this.advert_surface,
 			room: this.advert_room,
@@ -21,12 +22,13 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 			phone: this.advert_phone,
 			description:this.advert_des
 		});
-
+		console.log(advert);
 		// Redirect after save
 		advert.$save(function(response) {
 			$location.path('adverts/' + response._id);
 
 			// Clear form fields
+			$scope.id_map = '';
 			$scope.title = '';
 			$scope.surface = '';
 			$scope.room = '';
@@ -40,8 +42,6 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 			$scope.phone = '';
 			$scope.description = '';
 		}, function(errorResponse) {
-		//	$location.path('adverts/' + errorResponse.data.message);
-
 			$scope.error = errorResponse.data.message;
 		});
 	};

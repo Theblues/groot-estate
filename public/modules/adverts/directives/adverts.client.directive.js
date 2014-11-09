@@ -81,8 +81,10 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
                 $('.tooltip').addClass('hidden');
             }).on('click', function(d,i){
                 if (d.getShapeType() === 'building') {
-                    $('.advert_id_map').val(d.getId());
                     $('.advert-modal-add').css('visibility','visible');
+                    $('#advert_id_map').val(d.getId());
+                    /*$('#advert_id_map').removeClass('ng-pristine ');
+                    $('#advert_id_map').addClass('ng-dirty');*/
                 }
             });
         }, function(err){console.log(err);});

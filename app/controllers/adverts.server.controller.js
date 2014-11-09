@@ -72,7 +72,8 @@ exports.delete = function(req, res) {
 /**
  * List of Adverts
  */
-exports.list = function(req, res) { Advert.find().sort('-created').populate('user', 'displayName').exec(function(err, adverts) {
+exports.list = function(req, res) {
+	Advert.find().sort('-created').populate('user', 'displayName').exec(function(err, adverts) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -86,7 +87,17 @@ exports.list = function(req, res) { Advert.find().sort('-created').populate('use
 /**
  * Advert middleware
  */
-exports.advertByID = function(req, res, next, id) { Advert.findById(id).populate('user', 'displayName').exec(function(err, advert) {
+exports.advertByID = function(req, res, next, id) {
+	Advert.findById(id).populate('user', 'displayName').exec(function(err, advert) {
+		if (err) return next(err);
+		if (! advert) return next(new Error('Failed to load Advert ' + id));
+		req.advert = advert ;
+		next();
+	});
+};
+
+exports.advertByMapID = function(req, res, next, id) {
+	Advert.findOne({'id_map' : id}).populate('user', 'displayName').exec(function(err, advert) {
 		if (err) return next(err);
 		if (! advert) return next(new Error('Failed to load Advert ' + id));
 		req.advert = advert ;
