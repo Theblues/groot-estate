@@ -5,10 +5,17 @@ angular.module('adverts').controller('AdvertsController', ['$scope', '$statePara
 function($scope, $stateParams, $location, Authentication, Adverts ) {
 	$scope.authentication = Authentication;
 
+
+	$scope.addIdMap = function(id_map) {
+		$scope.advert_title = id_map;
+	};
+
+	$scope.resetForm = function() {
+		$scope.advert_add_form.$setPristine();
+	};
+
 	// Create new Advert
 	$scope.create = function() {
-
-		console.log($scope.advert_title);
 		// Create new Advert object
 		var advert = new Adverts ({
 			id_map: this.advert_id_map,
