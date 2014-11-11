@@ -1,16 +1,15 @@
-<!--<section data-ng-controller="AdvertsController" data-ng-init="findOne()">-->
 <div class="page-header">
 	<h1 data-ng-bind="advert.title"></h1>
 </div>
-<!-- affichage de la map -->
-<!--<div data-ng-include="map.url"></div>-->
 
 <div>Surface : <span data-ng-bind="advert.surface"></span></div>
+<div>Price : <span data-ng-bind="advert.price"></span></div>
+<div>Nb Room : <span data-ng-bind="advert.room"></span></div>
 <div class="pull-right" data-ng-show="authentication.user._id == advert.user._id">
-	<a class="btn btn-primary" href="/#!/adverts/{{advert._id}}/edit">
+	<a class="btn btn-primary" href="/#!/adverts/{{advert.id_map}}/edit">
 		<i class="glyphicon glyphicon-edit"></i>
 	</a>
-	<a class="btn btn-primary" data-ng-click="remove();">
+	<a class="btn btn-primary" data-ng-click="remove(advert);">
 		<i class="glyphicon glyphicon-trash"></i>
 	</a>
 </div>
@@ -21,6 +20,5 @@
 </small>
 
 <div>
-	<button type="reset" data-ng-click="resetForm()" onclick="$('.view-building').css('visibility','hidden');" class="btn btn-primary">Close</button>
+	<div onclick="$('.view-building').css('visibility','hidden');" class="btn btn-primary">Close</div>
 </div>
-<!--</section>-->

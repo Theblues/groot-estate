@@ -7,11 +7,7 @@ angular.module('adverts').config(['$stateProvider',
 		$stateProvider.
 		state('listAdverts', {
 			url: '/adverts',
-			templateUrl: 'modules/adverts/views/list-adverts.client.view.html'
-		}).
-		state('createAdvert', {
-			url: '/adverts/create',
-			templateUrl: 'modules/adverts/views/create-advert.client.view.html'
+			templateUrl: 'modules/adverts/views/adverts.client.view.html'
 		}).
 		state('viewAdvert', {
 			url: '/adverts/:advertId',

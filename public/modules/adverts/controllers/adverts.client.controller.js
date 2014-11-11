@@ -9,8 +9,8 @@ function($scope, $stateParams, $location, Authentication, Adverts) {
 		$scope.id_map = id_map;
 	};
 
-	$scope.resetForm = function() {
-		$scope.advert_add_form.$setPristine();
+	$scope.resetForm = function(data) {
+		data.advert_add_form.$setPristine();
 	};
 
 	// Create new Advert
@@ -25,10 +25,10 @@ function($scope, $stateParams, $location, Authentication, Adverts) {
 			energetic: this.advert_energetic,
 			email: this.advert_mail,
 			address: this.advert_address,
-			zip_code:this.advert_zip_code,
+			zip_code: this.advert_zip_code,
 			city: this.advert_city,
 			phone: this.advert_phone,
-			description:this.advert_des
+			description: this.advert_des
 		});
 
 		// Redirect after save
@@ -56,7 +56,8 @@ function($scope, $stateParams, $location, Authentication, Adverts) {
 
 	// Remove existing Advert
 	$scope.remove = function(advert) {
-		if ( advert ) { advert.$remove();
+		if (advert) {
+			advert.$remove();
 			for (var i in $scope.adverts ) {
 				if ($scope.adverts [i] === advert ) {
 					$scope.adverts.splice(i, 1);
@@ -96,8 +97,7 @@ function($scope, $stateParams, $location, Authentication, Adverts) {
 		$scope.advert = data;
 	};
 
-	$scope.map = { url: 'modules/adverts/views/map/edit-map.client.view.html'};
-	$scope.addBuilding = { url: 'modules/adverts/views/create-advert.client.view.html'};
-	$scope.viewBuilding = { url: 'modules/adverts/views/view-advert.client.view.html'};
+	$scope.addBuilding 	= function() { return 'modules/adverts/views/create-advert.client.view.html';	};
+	$scope.viewBuilding = function() { return 'modules/adverts/views/view-advert.client.view.html';		};
 }
 ]);
