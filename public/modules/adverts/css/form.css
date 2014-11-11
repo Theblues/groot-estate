@@ -1,9 +1,9 @@
-.advert-modal-add {
+.popup-building {
     padding-right: 15px;
 	position:absolute;
-	width:70%;
-    top : -10%;
-    left : 10%;
+	width: 70%;
+    top: 25%;
+    left: 10%;
     background-color: lightgrey;
     opacity: 0.9;
 	border-radius:5px;
@@ -16,13 +16,8 @@
     visibility: hidden;
 }
 
-.advert-modal-add:target {
+.popup-building:target {
 		/*-moz-transition: all 0.4s ease-in-out;
 		-webkit-transition: all 0.4s ease-in-out;*/
         transition: all 0.4s ease-in-out;
 }
-/*
-.advert-id-map{
-    display: none;
-}
-*/

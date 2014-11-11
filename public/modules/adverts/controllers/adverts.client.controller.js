@@ -2,12 +2,11 @@
 
 // Adverts controller
 angular.module('adverts').controller('AdvertsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Adverts',
-function($scope, $stateParams, $location, Authentication, Adverts ) {
+function($scope, $stateParams, $location, Authentication, Adverts) {
 	$scope.authentication = Authentication;
 
-
 	$scope.addIdMap = function(id_map) {
-		$scope.advert_title = id_map;
+		$scope.id_map = id_map;
 	};
 
 	$scope.resetForm = function() {
@@ -18,7 +17,7 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 	$scope.create = function() {
 		// Create new Advert object
 		var advert = new Adverts ({
-			id_map: this.advert_id_map,
+			id_map: $scope.id_map,
 			title: this.advert_title,
 			surface: this.advert_surface,
 			room: this.advert_room,
@@ -31,7 +30,7 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 			phone: this.advert_phone,
 			description:this.advert_des
 		});
-		//	console.log(advert);
+
 		// Redirect after save
 		advert.$save(function(response) {
 			$location.path('adverts/' + response._id);
@@ -56,7 +55,7 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 	};
 
 	// Remove existing Advert
-	$scope.remove = function( advert ) {
+	$scope.remove = function(advert) {
 		if ( advert ) { advert.$remove();
 			for (var i in $scope.adverts ) {
 				if ($scope.adverts [i] === advert ) {
@@ -93,6 +92,12 @@ function($scope, $stateParams, $location, Authentication, Adverts ) {
 		});
 	};
 
-	$scope.map = {name: 'map', url: 'modules/adverts/views/map/edit-map.client.view.html'};
+	$scope.viewAdvert = function(data) {
+		$scope.advert = data;
+	};
+
+	$scope.map = { url: 'modules/adverts/views/map/edit-map.client.view.html'};
+	$scope.addBuilding = { url: 'modules/adverts/views/create-advert.client.view.html'};
+	$scope.viewBuilding = { url: 'modules/adverts/views/view-advert.client.view.html'};
 }
 ]);

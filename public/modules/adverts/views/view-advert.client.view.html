@@ -1,22 +1,26 @@
-<section data-ng-controller="AdvertsController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="advert.title"></h1>
-	</div>
-	<!-- affichage de la map -->
-	<!--<div data-ng-include="map.url"></div>-->
+<!--<section data-ng-controller="AdvertsController" data-ng-init="findOne()">-->
+<div class="page-header">
+	<h1 data-ng-bind="advert.title"></h1>
+</div>
+<!-- affichage de la map -->
+<!--<div data-ng-include="map.url"></div>-->
 
-	<div>Surface : <span data-ng-bind="advert.surface"></span></div>
-	<div class="pull-right" data-ng-show="authentication.user._id == advert.user._id">
-		<a class="btn btn-primary" href="/#!/adverts/{{advert._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<small>
-		<em class="text-muted">
-			Posted by <span data-ng-bind="advert.user.displayName"></span>
-		</em>
-	</small>
-</section>
+<div>Surface : <span data-ng-bind="advert.surface"></span></div>
+<div class="pull-right" data-ng-show="authentication.user._id == advert.user._id">
+	<a class="btn btn-primary" href="/#!/adverts/{{advert._id}}/edit">
+		<i class="glyphicon glyphicon-edit"></i>
+	</a>
+	<a class="btn btn-primary" data-ng-click="remove();">
+		<i class="glyphicon glyphicon-trash"></i>
+	</a>
+</div>
+<small>
+	<em class="text-muted">
+		Posted by <span data-ng-bind="advert.user.displayName"></span>
+	</em>
+</small>
+
+<div>
+	<button type="reset" data-ng-click="resetForm()" onclick="$('.view-building').css('visibility','hidden');" class="btn btn-primary">Close</button>
+</div>
+<!--</section>-->
