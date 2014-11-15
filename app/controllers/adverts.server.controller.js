@@ -96,7 +96,7 @@ exports.advertByID = function(req, res, next, id) {
 	});
 };
 
-exports.advertByMapID = function(req, res, next, id) {
+exports.advertByIdMap = function(req, res, next, id) {
 	Advert.findOne({'id_map' : id}).populate('user', 'displayName').exec(function(err, advert) {
 		if (err) return next(err);
 		if (! advert) return next(new Error('Failed to load Advert ' + id));

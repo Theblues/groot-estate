@@ -5,8 +5,10 @@
 
     <map-list-estate></map-list-estate>
     <div class="tooltip hidden"><span class="name"></span></div>
-    <div class="popup-building add-building" data-ng-include="addBuilding();"></div>
-    <div class="popup-building view-building" data-ng-include="viewBuilding();"></div>
+    <div class="popup-building add-building" data-ng-include="addBuilding.url" data-ng-show="addBuilding.show"></div>
+    <div class="popup-building view-building" data-ng-include="viewBuilding.url" data-ng-show="viewBuilding.show"></div>
+    <div class="popup-building edit-building" data-ng-include="editBuilding.url" data-ng-show="editBuilding.show"></div>
+    <div class="popup-building msg-building" data-ng-include="msgBuilding.url" data-ng-show="msgBuilding.show"></div>
 
 <!--
     <div class="list-group">

@@ -3,7 +3,6 @@
         <fieldset>
             <h3><center>Add an advert on this estate</center></h3>
             <hr />
-            {{error}}
             <div class="form-group" id="div_advert_title">
                 <label class="col-sm-2 control-label" for="advert_title">Title</label>
                 <div class="col-sm-10">
@@ -99,7 +98,7 @@
                     <button type="submit" data-ng-disabled="advert_add_form.$invalid" class="btn btn-primary">Submit</button>
                 </div>
                 <div class="col-sm-2">
-                    <button type="reset" data-ng-click="resetForm(this)" onclick="$('.add-building').css('visibility','hidden');" class="btn btn-primary">Close</button>
+                    <button type="reset" data-ng-click="closeAll(this)" class="btn btn-primary">Close</button>
                 </div>
             </div>
         </fieldset>

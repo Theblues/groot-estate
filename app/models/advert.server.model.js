@@ -6,16 +6,6 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
-var validateLocalStrategyProperty = function(property) {
-	return ((this.provider !== 'local' && !this.updated) || property.length);
-};
-
-var validateLocalNumber = function(v) {
-	if (isNaN(parseFloat(v)) || !isFinite(v))
-		return false;
-	return v > 0;
-};
-
 /**
  * Advert Schema
  */
@@ -32,14 +22,10 @@ var advertSchema = new Schema({
 	},
 	surface: {
 		type: Number,
-		min: [0, 'Number upper 0'],
-		//validate: [validateLocalNumber, 'Number upper 0'],
 		required: 'Surface is required'
 	},
 	price: {
 		type: Number,
-		match:[/\d*\.?\d*/, 'Number required'],
-		validate: [validateLocalNumber, 'Number upper 0'],
 		required: 'Price is required'
 	},
 	room: {
@@ -53,7 +39,6 @@ var advertSchema = new Schema({
 	email: {
 		type: String,
 		trim: true,
-		match:[/.+\@.+\..+/, 'Please fill a valid email address'],
 		required: 'Email is required'
 	},
 	address: {
@@ -73,7 +58,6 @@ var advertSchema = new Schema({
 	},
 	phone: {
 		type: String,
-		match: [/^$|^\d{10}$/, 'Please enter a correct phone number'],
 		required: 'Phone number is required'
 	},
 	description: {

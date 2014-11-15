@@ -19,3 +19,11 @@
 	color: #777;
 	border-top: 1px solid #E5E5E5;
 }
+
+body {
+	padding-top: 20px;
+    padding-bottom: 20px;
+	background-image: url("../img/groot-trans.jpg");
+    background-repeat: no-repeat;
+    background-position:right top;
+}

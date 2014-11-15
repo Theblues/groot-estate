@@ -11,6 +11,15 @@ angular.module('adverts')
 });
 }
 ])
+.factory('AdvertsByIdMap', ['$resource', function($resource) {
+	return $resource('adverts/:advertIdMap', { advertIdMap: '@id_map'
+}, {
+	update: {
+		method: 'PUT'
+	}
+});
+}
+])
 .factory('d3', ['$window',
 function($window) {
 	return $window.d3;

@@ -6,10 +6,10 @@
 <div>Price : <span data-ng-bind="advert.price"></span></div>
 <div>Nb Room : <span data-ng-bind="advert.room"></span></div>
 <div class="pull-right" data-ng-show="authentication.user._id == advert.user._id">
-	<a class="btn btn-primary" href="/#!/adverts/{{advert.id_map}}/edit">
+	<a class="btn btn-primary" data-ng-click="viewBuilding.show=false; editBuilding.show=true">
 		<i class="glyphicon glyphicon-edit"></i>
 	</a>
-	<a class="btn btn-primary" data-ng-click="remove(advert);">
+	<a class="btn btn-primary" data-ng-click="remove()">
 		<i class="glyphicon glyphicon-trash"></i>
 	</a>
 </div>
@@ -20,5 +20,5 @@
 </small>
 
 <div>
-	<div onclick="$('.view-building').css('visibility','hidden');" class="btn btn-primary">Close</div>
+	<div data-ng-click="closeAll()" class="btn btn-primary">Close</div>
 </div>

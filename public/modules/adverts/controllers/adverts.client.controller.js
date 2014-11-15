@@ -1,17 +1,13 @@
 'use strict';
 
 // Adverts controller
-angular.module('adverts').controller('AdvertsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Adverts',
-function($scope, $stateParams, $location, Authentication, Adverts) {
+angular.module('adverts').controller('AdvertsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Adverts', 'AdvertsByIdMap',
+function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMap) {
 	$scope.authentication = Authentication;
 
-	$scope.addIdMap = function(id_map) {
-		$scope.id_map = id_map;
-	};
-
-	$scope.resetForm = function(data) {
-		data.advert_add_form.$setPristine();
-	};
+	$scope.id_map = '';
+	$scope.message = '';
+	$scope.messageClass = 'info';
 
 	// Create new Advert
 	$scope.create = function() {
@@ -33,8 +29,6 @@ function($scope, $stateParams, $location, Authentication, Adverts) {
 
 		// Redirect after save
 		advert.$save(function(response) {
-			$location.path('adverts/' + response._id);
-
 			// Clear form fields
 			$scope.id_map = '';
 			$scope.title = '';
@@ -49,8 +43,15 @@ function($scope, $stateParams, $location, Authentication, Adverts) {
 			$scope.price = '';
 			$scope.phone = '';
 			$scope.description = '';
+			$scope.message = 'Advert added';
+			$scope.messageClass = 'success';
+			$scope.addBuilding.show  = false;
+			$scope.msgBuilding.show	 = true;
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
+			$scope.message = $scope.error;
+			$scope.messageClass = 'error';
+			$scope.msgBuilding.show	 = true;
 		});
 	};
 
@@ -68,16 +69,28 @@ function($scope, $stateParams, $location, Authentication, Adverts) {
 				$location.path('adverts');
 			});
 		}
+
+		$scope.viewBuilding.show = false;
+		$scope.msgBuilding.show	 = true;
+		$scope.message = 'Advert deleted';
+		$scope.messageClass = 'success';
 	};
 
 	// Update existing Advert
 	$scope.update = function() {
-		var advert = $scope.advert ;
+		var advert = $scope.advert;
 
 		advert.$update(function() {
-			$location.path('adverts/' + advert._id);
+			$scope.editBuilding.show = false;
+			$scope.message = 'Advert edited';
+			$scope.messageClass = 'success';
+			$scope.msgBuilding.show	 = true;
+
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
+			$scope.message = $scope.error;
+			$scope.messageClass = 'error';
+			$scope.msgBuilding.show	 = true;
 		});
 	};
 
@@ -93,11 +106,32 @@ function($scope, $stateParams, $location, Authentication, Adverts) {
 		});
 	};
 
-	$scope.viewAdvert = function(data) {
-		$scope.advert = data;
+	$scope.findOneByIdMap = function(data) {
+		$scope.data = data;
+		$scope.advert = AdvertsByIdMap.get({
+			advertIdMap: data.id_map
+		});
 	};
 
-	$scope.addBuilding 	= function() { return 'modules/adverts/views/create-advert.client.view.html';	};
-	$scope.viewBuilding = function() { return 'modules/adverts/views/view-advert.client.view.html';		};
-}
-]);
+	$scope.closeAll = function(data) {
+		$scope.id_map = '';
+		$scope.advert = '';
+		$scope.message = '';
+		$scope.messageClass = 'info';
+		$scope.viewBuilding.show = false;
+		$scope.addBuilding.show  = false;
+		$scope.editBuilding.show = false;
+		$scope.msgBuilding.show	 = false;
+		if (typeof data !== 'undefined' && typeof data.advert_add_form !== 'undefined') {
+			data.advert_add_form.$setPristine();
+		}
+		if (typeof data !== 'undefined' && typeof data.advert_edit_form !== 'undefined') {
+			data.advert_edit_form.$setPristine();
+		}
+	};
+
+	$scope.addBuilding 	= {url:'modules/adverts/views/create-advert.client.view.html', 	show:false};
+	$scope.viewBuilding = {url:'modules/adverts/views/view-advert.client.view.html', 	show:false};
+	$scope.editBuilding = {url:'modules/adverts/views/edit-advert.client.view.html', 	show:false};
+	$scope.msgBuilding 	= {url:'modules/adverts/views/msg-advert.client.view.html', 	show:false};
+}]);

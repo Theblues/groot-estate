@@ -1,12 +1,10 @@
-<section data-ng-controller="AdvertsController" data-ng-init="findOne()">
+<!--<section data-ng-controller="AdvertsController" data-ng-init="findOne()">-->
     <div class="page-header">
         <h1>Edit Advert</h1>
     </div>
 
-    <div data-ng-include="map.url"></div>
-
-    <div class="editForm hidden">
-        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+    <div class="editForm">
+        <form name="advert_edit_form" class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
                 <div class="form-group">
                     <label class="control-label col-sm-1" for="advert_title">Title</label>
@@ -20,7 +18,8 @@
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
+                <div data-ng-click="closeAll(this)" class="btn btn-primary">Close</div>
             </fieldset>
         </form>
     </div>
-</section>
+<!--</section>-->

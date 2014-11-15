@@ -9,12 +9,12 @@ module.exports = function(app) {
 		.get(adverts.list)
 		.post(users.requiresLogin, adverts.create);
 
-	app.route('/adverts/:advertMapId')
+	app.route('/adverts/:advertIdMap')
 		.get(adverts.read)
 		.put(users.requiresLogin, adverts.hasAuthorization, adverts.update)
 		.delete(users.requiresLogin, adverts.hasAuthorization, adverts.delete);
 
 	// Finish by binding the Advert middleware
 	app.param('advertId', adverts.advertByID);
-	app.param('advertMapId', adverts.advertByMapID);
+	app.param('advertIdMap', adverts.advertByIdMap);
 };
