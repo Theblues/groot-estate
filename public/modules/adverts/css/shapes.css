@@ -6,7 +6,7 @@
 }
 
 .building.over {
-    stroke: #F5F5DC;
+    stroke: #A9A9A9;
     stroke-width: 1px;
     fill: #808080;
 }
@@ -18,26 +18,14 @@
     color: #007FFF;
     opacity: 0.8;
 }
-/*
-.natural.over {
-    stroke: #87CEEB;
-    stroke-width: 1px;
-    fill: #1E90FF;
-}
-*/
+
 .amenity {
     stroke: #FF6347;
     stroke-width: 1px;
     fill: #FF7F50;
     color: #FF6347;
 }
-/*
-.amenity.over {
-    stroke: #D3D3D3;
-    stroke-width: 1px;
-    fill: #FF6347;
-}
-*/
+
 .road {
     stroke: lightgray;
     stroke-width: 2px;
@@ -50,13 +38,7 @@
     stroke-width: 1px;
     fill: #FFA500;
 }
-/*
-.shop.over {
-    stroke: #FFA500;
-    stroke-width: 1px;
-    fill: #FF8C00;
-}
-*/
+
 .tooltip {
         position: absolute;
         width: auto;

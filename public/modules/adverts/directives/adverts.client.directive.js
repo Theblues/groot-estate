@@ -35,13 +35,22 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
             var displayWidth = coordiateWidth;
             var displayHeight = displayWidth * coordiateHeight / coordiateWidth;
 
+            function zoomHandler() {
+                svg.attr('transform', 'translate(' + d3.event.translate + ')scale(' + d3.event.scale + ')');
+            }
+
             var svg = d3.select(element[0])
             .append('svg')
-            .attr('data-ng-model', 'idMap')
             .attr('width', displayWidth)
             .attr('height', displayHeight)
-            .attr('class', 'map')
+            .append('g')
+            .call(d3.behavior.zoom().scaleExtent([1, 8]).on('zoom', zoomHandler))
             .append('g');
+
+            svg.append('rect')
+            .attr('class', 'overlay')
+            .attr('width', displayWidth)
+            .attr('height', displayHeight);
 
             var tabTypes = ['building', 'natural', 'amenity', 'shop', 'road'];
             shape = svg.selectAll('.shape');
@@ -57,7 +66,6 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
                         d3.select('.tooltip')
                         .style('left', (d3.event.pageX - 15) + 'px')
                         .style('top', (d3.event.pageY + 20) + 'px');
-
                         $('.name').text(d.getName());
                         $('.tooltip').removeClass('hidden');
                     }
