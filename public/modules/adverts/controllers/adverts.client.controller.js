@@ -19,12 +19,12 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			room: this.advert_room,
 			price: this.advert_price,
 			energetic: this.advert_energetic,
-			email: this.advert_mail,
+			email: this.advert_email,
 			address: this.advert_address,
 			zip_code: this.advert_zip_code,
 			city: this.advert_city,
 			phone: this.advert_phone,
-			description: this.advert_des
+			description: this.advert_description
 		});
 
 		// Redirect after save
@@ -85,7 +85,6 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			$scope.message = 'Advert edited';
 			$scope.messageClass = 'success';
 			$scope.msgBuilding.show	 = true;
-
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
 			$scope.message = $scope.error;

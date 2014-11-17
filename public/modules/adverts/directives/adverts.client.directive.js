@@ -69,12 +69,11 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
             })
             .on('click', function(d) {
                 if (d.getShapeType() === 'building') {
+                    scope.closeAll();
                     $http.get('/adverts/' + d.getId()).success(function (data, status, headers, config) {
-                        scope.addBuilding.show = false;
                         scope.viewBuilding.show = true;
                         scope.findOneByIdMap(data);
                     }).error(function(data, status, headers, config) {
-                        scope.viewBuilding.show = false;
                         scope.addBuilding.show = true;
                         scope.id_map = d.getId();
                     });

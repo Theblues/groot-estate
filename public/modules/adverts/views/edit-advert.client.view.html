@@ -1,25 +1,126 @@
-<!--<section data-ng-controller="AdvertsController" data-ng-init="findOne()">-->
-    <div class="page-header">
-        <h1>Edit Advert</h1>
-    </div>
+<div class="page-header">
+    <h3><center>Edit an Advert</center></h3>
+</div>
 
-    <div class="editForm">
-        <form name="advert_edit_form" class="form-horizontal" data-ng-submit="update()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label col-sm-1" for="advert_title">Title</label>
-                    <div class="controls col-sm-4">
-                        <input type="text" data-ng-model="advert.title" id="name" class="form-control" placeholder="Title" required>
+<div class="editForm">
+    <form name="advert_edit_form" class="form-horizontal" data-ng-submit="update()" novalidate>
+        <fieldset>
+            <div class="form-group" id="div_advert_title">
+                <label class="col-sm-2 control-label" for="advert_title">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="advert_title" data-ng-model="advert.title" placeholder="Advert's Title" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="div_advert_surface">
+                    <label class="col-sm-2 control-label" for="advert_surface">Surface</label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="advert_surface" data-ng-model="advert.surface" data-ng-pattern="/^\d*$/" placeholder="50" min="1" required>
+                            <span class="input-group-addon">m²</span>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
+                <div id="div_advert_room">
+                    <label class="col-sm-2 control-label" for="advert_room">Number of room</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" id="advert_room" data-ng-model="advert.room" min="1" placeholder="5" required>
+                    </div>
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-                <div data-ng-click="closeAll(this)" class="btn btn-primary">Close</div>
-            </fieldset>
-        </form>
-    </div>
-<!--</section>-->
+            </div>
+            <div class="form-group">
+                <div id="div_advert_price">
+                    <label class="col-sm-2 control-label" for="advert_price">Price</label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="advert_price" data-ng-model="advert.price" data-ng-pattern="/^\d*\.?\d*$/" placeholder="500" min="1" required>
+                            <span class="input-group-addon">€</span>
+                        </div>
+                    </div>
+                </div>
+                <div >
+                    <label class="col-sm-2 control-label" for="advert_energetic">Energetic</label>
+                    <div class="col-sm-4">
+                        <select class="form-control" id="advert_energetic" data-ng-model="advert.energetic" required>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>E</option>
+                            <option>F</option>
+                            <option>G</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="div_advert_contact">
+                    <label class="col-sm-2 control-label" for="advert_mail">Email</label>
+                    <div class="col-sm-4">
+                        <input type="email" class="form-control" id="advert_mail" data-ng-model="advert.email" data-ng-pattern="/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}/" placeholder="Email" required>
+                    </div>
+                </div>
+                <div id="div_advert_phone">
+                    <label class="col-sm-2 control-label" for="advert_phone">Phone</label>
+                    <div class="col-sm-4">
+                        <input type="tel" class="form-control" id="advert_phone" data-ng-model="advert.phone" data-ng-pattern="/^$|^\d{10}$/" placeholder="Phone" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="div_advert_address">
+                    <label class="col-sm-2 control-label" for="advert_address">Address</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="advert_address" data-ng-model="advert.address" placeholder="Address">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="div_advert_zip_code">
+                    <label class="col-sm-2 control-label" for="advert_zip_code">Zip Code</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="advert_zip_code" data-ng-model="advert.zip_code" placeholder="Zip Code" required></input>
+                    </div>
+                </div>
+                <div id="div_advert_city">
+                    <label class="col-sm-2 control-label" for="advert_city">City</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="advert_city" data-ng-model="advert.city" placeholder="City" required></input>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="advert_des">Description</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="advert_des" data-ng-model="advert.description" rows="4" placeholder="Describe your real estaste..."></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-1">
+                    <button type="submit" data-ng-disabled="advert_add_form.$invalid" class="btn btn-primary">Update</button>
+                </div>
+                <div class="col-sm-1">
+                    <button type="reset" data-ng-click="closeAll(this)" class="btn btn-primary">Close</button>
+                </div>
+            </div>
+            <button type="reset" data-ng-click="closeAll(this)" class="close-button">X</button>
+        </fieldset>
+        <!--
+        <fieldset>
+            <div class="form-group">
+                <label class="control-label col-sm-1" for="advert_title">Title</label>
+                <div class="controls col-sm-4">
+                    <input type="text" data-ng-model="advert.title" id="name" class="form-control" placeholder="Title" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-default">
+            </div>
+            <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+            </div>
+            <div data-ng-click="closeAll(this)" class="btn btn-primary">Close</div>
+        </fieldset>
+    -->
+    </form>
+</div>

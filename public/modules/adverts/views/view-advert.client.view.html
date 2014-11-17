@@ -1,10 +1,19 @@
 <div class="page-header">
-	<h1 data-ng-bind="advert.title"></h1>
+	<center><h3 data-ng-bind="advert.title"></h3></center>
 </div>
 
 <div>Surface : <span data-ng-bind="advert.surface"></span></div>
 <div>Price : <span data-ng-bind="advert.price"></span></div>
 <div>Nb Room : <span data-ng-bind="advert.room"></span></div>
+<div>Energetic : <span data-ng-bind="advert.energetic"></span></div>
+<div>Email : <span data-ng-bind="advert.email"></span></div>
+<div>Phone : <span data-ng-bind="advert.phone"></span></div>
+<div>Address : <span data-ng-bind="advert.address"></span></div>
+<div>Zip Code : <span data-ng-bind="advert.zip_code"></span></div>
+<div>City : <span data-ng-bind="advert.city"></span></div>
+<div>Description : <span data-ng-bind="advert.description"></span></div>
+
+
 <div class="pull-right" data-ng-show="authentication.user._id == advert.user._id">
 	<a class="btn btn-primary" data-ng-click="viewBuilding.show=false; editBuilding.show=true">
 		<i class="glyphicon glyphicon-edit"></i>
@@ -19,6 +28,4 @@
 	</em>
 </small>
 
-<div>
-	<div data-ng-click="closeAll()" class="btn btn-primary">Close</div>
-</div>
+<button data-ng-click="closeAll(this)" class="close-button">X</button>

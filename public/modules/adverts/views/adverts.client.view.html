@@ -1,6 +1,6 @@
-<section data-ng-controller="AdvertsController" data-ng-init="find()">
+<div data-ng-controller="AdvertsController">
     <div class="page-header">
-        <h1>Select a Real Estate</h1>
+        <h2>Select a Real Estate</h2>
     </div>
 
     <map-list-estate></map-list-estate>
@@ -8,7 +8,7 @@
     <div class="popup-building add-building" data-ng-include="addBuilding.url" data-ng-show="addBuilding.show"></div>
     <div class="popup-building view-building" data-ng-include="viewBuilding.url" data-ng-show="viewBuilding.show"></div>
     <div class="popup-building edit-building" data-ng-include="editBuilding.url" data-ng-show="editBuilding.show"></div>
-    <div class="popup-building msg-building" data-ng-include="msgBuilding.url" data-ng-show="msgBuilding.show"></div>
+    <div class="popup-building-alert msg-building" data-ng-include="msgBuilding.url" data-ng-show="msgBuilding.show"></div>
 
 <!--
     <div class="list-group">
@@ -24,4 +24,4 @@
     </div>
 -->
 
-</section>
+</div>
