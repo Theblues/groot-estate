@@ -7,7 +7,6 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
         promise.then(function(tabData) {
             var data = tabData.data;
             var shape = {};
-
             var tabShapes = [];
             var j = 0;
 
@@ -44,8 +43,7 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
             .attr('width', displayWidth)
             .attr('height', displayHeight)
             .append('g')
-            .call(d3.behavior.zoom().scaleExtent([1, 8]).on('zoom', zoomHandler))
-            .append('g');
+            .call(d3.behavior.zoom().scaleExtent([1, 8]).on('zoom', zoomHandler));
 
             svg.append('rect')
             .attr('class', 'overlay')

@@ -3,21 +3,23 @@
 //Adverts service used to communicate Adverts REST endpoints
 angular.module('adverts')
 .factory('Adverts', ['$resource', function($resource) {
-	return $resource('adverts/:advertId', { advertId: '@_id'
-}, {
-	update: {
-		method: 'PUT'
-	}
-});
+	return $resource('adverts/:advertId', {
+		advertId: '@_id'
+	}, {
+		update: {
+			method: 'PUT'
+		}
+	});
 }
 ])
 .factory('AdvertsByIdMap', ['$resource', function($resource) {
-	return $resource('adverts/:advertIdMap', { advertIdMap: '@id_map'
-}, {
-	update: {
-		method: 'PUT'
-	}
-});
+	return $resource('adverts/:advertIdMap', {
+		advertIdMap: '@id_map'
+	}, {
+		update: {
+			method: 'PUT'
+		}
+	});
 }
 ])
 .factory('d3', ['$window',

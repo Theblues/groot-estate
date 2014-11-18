@@ -8,14 +8,6 @@ angular.module('adverts').config(['$stateProvider',
 		state('listAdverts', {
 			url: '/adverts',
 			templateUrl: 'modules/adverts/views/adverts.client.view.html'
-		}).
-		state('viewAdvert', {
-			url: '/adverts/:advertId',
-			templateUrl: 'modules/adverts/views/view-advert.client.view.html'
-		}).
-		state('editAdvert', {
-			url: '/adverts/:advertId/edit',
-			templateUrl: 'modules/adverts/views/edit-advert.client.view.html'
 		});
 	}
 ]);

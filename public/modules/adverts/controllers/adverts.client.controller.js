@@ -105,6 +105,7 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 		});
 	};
 
+	// Find existing Advert
 	$scope.findOneByIdMap = function(data) {
 		$scope.data = data;
 		$scope.advert = AdvertsByIdMap.get({

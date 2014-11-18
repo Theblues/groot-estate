@@ -9,19 +9,4 @@
     <div class="popup-building view-building" data-ng-include="viewBuilding.url" data-ng-show="viewBuilding.show"></div>
     <div class="popup-building edit-building" data-ng-include="editBuilding.url" data-ng-show="editBuilding.show"></div>
     <div class="popup-building-alert msg-building" data-ng-include="msgBuilding.url" data-ng-show="msgBuilding.show"></div>
-
-<!--
-    <div class="list-group">
-        <a data-ng-repeat="advert in adverts" data-ng-href="#!/adverts/{{advert.id_map}}" class="list-group-item">
-			<h4 class="list-group-item-heading" data-ng-bind="advert.title"></h4><h5 class="list-group-item-heading" data-ng-bind="advert.address"></h5>
-            <small class="list-group-item-text">
-                Posted by <span data-ng-bind="advert.user.username"></span>
-            </small>
-        </a>
-    </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!adverts.$resolved || adverts.length">
-    	No Adverts yet, why don't you <a href="/#!/adverts/create">create one</a>?
-    </div>
--->
-
 </div>
