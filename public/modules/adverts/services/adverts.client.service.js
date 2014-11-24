@@ -37,8 +37,4 @@ function($window) {
 .factory('shapes', ['$window',
 function($window) {
 	return $window.shapes;
-}])
-.factory('$upload', ['$window',
-function($window) {
-	return $window.$upload;
 }]);

@@ -1,8 +1,8 @@
 'use strict';
 
 // Adverts controller
-angular.module('adverts').controller('AdvertsController', ['$scope', '$stateParams', '$location', '$upload', 'Authentication', 'Adverts', 'AdvertsByIdMap',
-function($scope, $stateParams, $location, $upload, Authentication, Adverts, AdvertsByIdMap) {
+angular.module('adverts').controller('AdvertsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Adverts', 'AdvertsByIdMap',
+function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMap) {
 	$scope.authentication = Authentication;
 
 	$scope.id_map = '';
