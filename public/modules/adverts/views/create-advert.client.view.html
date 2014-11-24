@@ -98,8 +98,12 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="advert_des">Photo</label>
                 <div class="col-sm-10">
-                    <input type="file" name="photos" multiple></input>
+                    <div id="form-DAD" class="col-sm-3 form-drag-and-drop" data-ng-model="form_drag_and_drop" data-ng-init="dragAndDrop()"></div>
+                    <div class="col-sm-7" id="list-photo"> Aucune photo</div>
                 </div>
+                    <!--<div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function" class="form-drag-and-drop">drop files here</div>
+                    <div ng-file-drop-available="dropSupported=true" ng-show="!dropSupported">HTML5 Drop File is not supported!</div>-->
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-1">
                     <button type="submit" data-ng-disabled="advert_add_form.$invalid" class="btn btn-primary">Submit</button>

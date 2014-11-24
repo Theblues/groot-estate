@@ -29,7 +29,9 @@ module.exports = {
 				'public/lib/jquery/dist/jquery.js',
 				'public/lib/d3/d3.js',
 				'public/lib/lodash/dist/lodash.js',
-				'public/lib/Shapes/lib/shapes.js'
+				'public/lib/Shapes/lib/shapes.js',
+				'public/lib/ng-file-upload/angular-file-upload.js',
+				'public/lib/ng-file-upload/angular-file-upload-shim.js'
 			]
 		},
 		css: [

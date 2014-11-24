@@ -2,7 +2,7 @@
     padding-right: 15px;
     position:absolute;
     width: 70%;
-    top: 25%;
+    top: 20%;
     left: 10%;
     background-color: lightgrey;
     opacity: 0.9;
@@ -69,4 +69,12 @@
 .overlay {
     background: #ffffff;
     opacity: 0;
+}
+
+
+.form-drag-and-drop {
+    background: none repeat scroll 0 0 #F8F8F8;
+    border: 5px dashed #DDD;
+    height: 100px;
+    text-align: center;
 }
