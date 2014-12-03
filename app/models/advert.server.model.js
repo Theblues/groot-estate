@@ -65,6 +65,9 @@ var advertSchema = new Schema({
 		trim: true,
 		default: ''
 	},
+	photos: {
+		type: Array
+	},
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'

@@ -13,7 +13,14 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 	// Create new Advert
 	$scope.create = function() {
 
-		console.log($scope.files);
+
+		$scope.filesName = [];
+		for (var i = 0; i < $scope.files.length; i++) {
+			$scope.filesName[i] = $scope.files[i].name;
+		}
+		console.log($scope.filesName);
+		// upload
+
 		// Create new Advert object
 		var advert = new Adverts ({
 			id_map: $scope.id_map,
@@ -27,7 +34,8 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			zip_code: this.advert_zip_code,
 			city: this.advert_city,
 			phone: this.advert_phone,
-			description: this.advert_description
+			description: this.advert_description,
+			photos: $scope.filesName
 		});
 
 		// Redirect after save
@@ -50,6 +58,8 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			$scope.messageClass = 'success';
 			$scope.addBuilding.show  = false;
 			$scope.msgBuilding.show	 = true;
+			$scope.files = [];
+			$scope.listAddPhoto();
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
 			$scope.message = $scope.error;
@@ -122,7 +132,7 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 		$scope.message = '';
 		$scope.messageClass = 'info';
 		$scope.files = [];
-		$scope.listPhoto();
+		$scope.listAddPhoto();
 		$scope.viewBuilding.show = false;
 		$scope.addBuilding.show  = false;
 		$scope.editBuilding.show = false;
@@ -142,41 +152,32 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 
 			var files = evt.dataTransfer.files; // FileList object.
 			var filePresent = $scope.files.length;
-			console.log('files longueur : ' + files.length);
 			for (var i = 0; i < files.length; i++) {
 				$scope.files[i + filePresent] = files[i];
 			}
 
 			document.getElementById('form-DAD').style.background='white';
-			$scope.listPhoto();
+			$scope.listAddPhoto();
 		}
 
 		function handleDragOver(evt) {
-			console.log('test 2');
 			evt.stopPropagation();
 			evt.preventDefault();
 			evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
 			document.getElementById('form-DAD').style.background='red';
 		}
 
-		function handleDragOut(evt) {
-			console.log('test 3');
-			document.getElementById('form-DAD').style.background='white';
-		}
-
 		var dropZone = document.getElementById('form-DAD');
 		dropZone.addEventListener('dragover', handleDragOver, false);
-		dropZone.addEventListener('mouseout', handleDragOut, false);
 		dropZone.addEventListener('drop', handleFileSelect, false);
 	};
 
-	$scope.listPhoto = function() {
+	$scope.listAddPhoto = function() {
 		var list = '';
 		if ($scope.files.length === 0) {
 			list = 'No Photo yet';
 		}
 		else {
-			console.log('scope files longueur : ' + $scope.files.length);
 			list = '<ul class="class="list-group">';
 			for (var i = 0; i < $scope.files.length; i++) {
 				list += '<li class="list-group-item">' + $scope.files[i].name + '<span class="glyphicon glyphicon-remove-sign navbar-right"></span></li>';
