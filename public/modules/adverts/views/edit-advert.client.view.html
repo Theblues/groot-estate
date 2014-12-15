@@ -1,6 +1,9 @@
-<div class="page-header">
-    <h3>Edit an Advert</h3>
-</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <button data-ng-click="closeAll(this)" type="button" class="close pull-right"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h3 class="panel-title">Edit an Advert</h3>
+  </div>
+  <div class="panel-body">
 
 <div class="editForm">
     <form name="advert_edit_form" class="form-horizontal" data-ng-submit="update()" novalidate>
@@ -103,7 +106,6 @@
                     <button type="reset" data-ng-click="closeAll(this)" class="btn btn-primary">Close</button>
                 </div>
             </div>
-            <button type="reset" data-ng-click="closeAll(this)" class="close-button">X</button>
         </fieldset>
         <!--
         <fieldset>
@@ -123,4 +125,5 @@
         </fieldset>
     -->
     </form>
+</div>
 </div>

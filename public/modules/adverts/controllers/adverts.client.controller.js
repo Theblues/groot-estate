@@ -11,7 +11,7 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 		$scope.messageClass = 'info';
 		$scope.files = [];
 		$scope.classes = '';
-	}
+	};
 
 	// Create new Advert
 	$scope.create = function() {

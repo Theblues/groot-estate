@@ -1,5 +1,4 @@
 .popup-building {
-    padding-right: 15px;
     position:absolute;
     width: 70%;
     top: 20%;
@@ -81,4 +80,30 @@
 
 .page-header h3 {
     text-align: center;
+}
+
+.panel-title {
+    text-align: center;
+    font-variant: small-caps;
+}
+
+.panel {
+    margin: 0 0 0 0;
+    background-color: #EDF0EC;
+}
+
+.panel-footer {
+  padding: 0 0 0 0;
+  height: 45px;
+}
+
+.panel-footer .pull-left {
+  padding: 10px;
+}
+.panel-footer .pull-right {
+  padding: 5px;
+}
+
+.my-messages {
+  transition:1s linear all;
 }
