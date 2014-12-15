@@ -1,19 +1,19 @@
 'use strict';
 
-angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', 'shapes',function($http, d3, _, $, shapes) {
+angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', 'shapes', function ($http, d3, _, $, shapes) {
 
-    function doShapes(scope, element){
-        var promise = $http.get('/lib/Shapes/data/eure.json', {responseType:'json'});
-        promise.then(function(tabData) {
+    function doShapes(scope, element) {
+        var promise = $http.get('/lib/Shapes/data/eure.json', {responseType: 'json'});
+        promise.then(function (tabData) {
             var data = tabData.data;
             var shape = {};
             var tabShapes = [];
             var j = 0;
 
             var xMin = Infinity;
-            var xMax= -Infinity;
+            var xMax = -Infinity;
             var yMin = Infinity;
-            var yMax= -Infinity;
+            var yMax = -Infinity;
 
             for (var i = data.length - 1; i >= 0; i--) {
                 shape = shapes.buildShape(data[i]);
@@ -39,53 +39,57 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
             }
 
             var svg = d3.select(element[0])
-            .append('svg')
-            .attr('width', displayWidth)
-            .attr('height', displayHeight)
-            .append('g')
-            .call(d3.behavior.zoom().scaleExtent([1, 8]).on('zoom', zoomHandler));
+                .append('svg')
+                .attr('width', displayWidth)
+                .attr('height', displayHeight)
+                .append('g')
+                .call(d3.behavior.zoom().scaleExtent([1, 8]).on('zoom', zoomHandler));
 
             svg.append('rect')
-            .attr('class', 'overlay')
-            .attr('width', displayWidth)
-            .attr('height', displayHeight);
+                .attr('class', 'overlay')
+                .attr('width', displayWidth)
+                .attr('height', displayHeight);
 
-            var tabTypes = ['building', 'natural', 'amenity', 'shop', 'road'];
             shape = svg.selectAll('.shape');
-
             var shapesData = shape.data(tabShapes);
             shapesData.enter().append('path')
-            .attr('class', function(d) {return d.getShapeType();})
-            .attr('d', function(d) { return d.toSvgPath();})
-            .on('mouseover', function(d) {
-                d3.select(this).classed('over', 1);
-                if (d.getShapeType() !== 'building') {
-                    if (d.getName() !== '') {
-                        d3.select('.tooltip')
-                        .style('left', (d3.event.pageX - 15) + 'px')
-                        .style('top', (d3.event.pageY + 20) + 'px');
-                        $('.name').text(d.getName());
-                        $('.tooltip').removeClass('hidden');
+                .attr('class', function (d) {
+                    return d.getShapeType();
+                })
+                .attr('d', function (d) {
+                    return d.toSvgPath();
+                })
+                .on('mouseover', function (d) {
+                    d3.select(this).classed('over', 1);
+                    if (d.getShapeType() !== 'building') {
+                        if (d.getName() !== '') {
+                            d3.select('.tooltip')
+                                .style('left', (d3.event.pageX - 15) + 'px')
+                                .style('top', (d3.event.pageY + 20) + 'px');
+                            $('.name').text(d.getName());
+                            $('.tooltip').removeClass('hidden');
+                        }
                     }
-                }
-            })
-            .on('mouseout', function(d) {
-                d3.select(this).classed('over', 0);
-                $('.tooltip').addClass('hidden');
-            })
-            .on('click', function(d) {
-                if (d.getShapeType() === 'building') {
-                    scope.closeAll();
-                    $http.get('/adverts/' + d.getId()).success(function (data, status, headers, config) {
-                        scope.viewBuilding.show = true;
-                        scope.findOneByIdMap(data);
-                    }).error(function(data, status, headers, config) {
-                        scope.addBuilding.show = true;
-                        scope.id_map = d.getId();
-                    });
-                }
-            });
-        }, function(err){console.log(err);});
+                })
+                .on('mouseout', function (d) {
+                    d3.select(this).classed('over', 0);
+                    $('.tooltip').addClass('hidden');
+                })
+                .on('click', function (d) {
+                    if (d.getShapeType() === 'building') {
+                        scope.closeAll();
+                        $http.get('/adverts/' + d.getId()).success(function (data, status, headers, config) {
+                            scope.viewBuilding.show = true;
+                            scope.findOneByIdMap(data);
+                        }).error(function (data, status, headers, config) {
+                            scope.addBuilding.show = true;
+                            scope.id_map = d.getId();
+                        });
+                    }
+                });
+        }, function (err) {
+            console.log(err);
+        });
     }
 
     return {

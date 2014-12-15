@@ -78,3 +78,7 @@
     height: 100px;
     text-align: center;
 }
+
+.page-header h3 {
+    text-align: center;
+}
