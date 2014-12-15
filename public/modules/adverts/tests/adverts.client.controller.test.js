@@ -176,7 +176,6 @@
             expect(scope.phone).toEqual('');
             expect(scope.description).toEqual('');
 
-
             // Test URL redirection after the Advert was created
             expect($location.path()).toBe('');
         }));

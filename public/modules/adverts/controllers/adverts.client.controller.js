@@ -11,8 +11,7 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 		$scope.messageClass = 'info';
 		$scope.files = [];
 		$scope.classes = '';
-	}
-
+	};
 	// Create new Advert
 	$scope.create = function() {
 
@@ -61,7 +60,6 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			$scope.addBuilding.show  = false;
 			$scope.msgBuilding.show	 = true;
 			$scope.files = [];
-			$scope.listAddPhoto();
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
 			$scope.message = $scope.error;
