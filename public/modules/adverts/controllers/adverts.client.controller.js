@@ -5,11 +5,13 @@ angular.module('adverts').controller('AdvertsController', ['$scope', '$statePara
 function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMap) {
 	$scope.authentication = Authentication;
 
-	$scope.id_map = '';
-	$scope.message = '';
-	$scope.messageClass = 'info';
-	$scope.files = [];
-
+	$scope.init = function() {
+		$scope.id_map = '';
+		$scope.message = '';
+		$scope.messageClass = 'info';
+		$scope.files = [];
+		$scope.classes = '';
+	};
 	// Create new Advert
 	$scope.create = function() {
 
@@ -20,20 +22,21 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 		console.log($scope.filesName);
 		// upload
 
+		console.log($scope.advert_title);
 		// Create new Advert object
 		var advert = new Adverts ({
 			id_map: $scope.id_map,
-			title: this.advert_title,
-			surface: this.advert_surface,
-			room: this.advert_room,
-			price: this.advert_price,
-			energetic: this.advert_energetic,
-			email: this.advert_email,
-			address: this.advert_address,
-			zip_code: this.advert_zip_code,
-			city: this.advert_city,
-			phone: this.advert_phone,
-			description: this.advert_description,
+			title: $scope.advert_title || this.advert_title,
+			surface: $scope.advert_surface || this.advert_surface,
+			room: $scope.advert_room || this.advert_room,
+			price: $scope.advert_price || this.advert_price,
+			energetic: $scope.advert_energetic || this.advert_energetic,
+			email: $scope.advert_email || this.advert_email,
+			address: $scope.advert_address || this.advert_address,
+			zip_code: $scope.advert_zip_code || this.advert_zip_code,
+			city: $scope.advert_city || this.advert_city,
+			phone: $scope.advert_phone || this.advert_phone,
+			description: $scope.advert_description || this.advert_description,
 			photos: $scope.filesName
 		});
 
@@ -50,7 +53,6 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			$scope.address = '';
 			$scope.zip_code = '';
 			$scope.city = '';
-			$scope.price = '';
 			$scope.phone = '';
 			$scope.description = '';
 			$scope.message = 'Advert added';
@@ -58,7 +60,6 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			$scope.addBuilding.show  = false;
 			$scope.msgBuilding.show	 = true;
 			$scope.files = [];
-			$scope.listAddPhoto();
 		}, function(errorResponse) {
 			$scope.error = errorResponse.data.message;
 			$scope.message = $scope.error;
