@@ -73,7 +73,7 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 		if (advert) {
 			advert.$remove();
 			for (var i in $scope.adverts ) {
-				if ($scope.adverts[i] === advert ) {
+				if ($scope.adverts [i] === advert ) {
 					$scope.adverts.splice(i, 1);
 				}
 			}
@@ -124,6 +124,7 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 		$scope.advert = AdvertsByIdMap.get({
 			advertIdMap: data.id_map
 		});
+		$scope.advert.description = $scope.advert.description.replace(/(?:\r\n|\r|\n)/g, '<br />');
 	};
 
 	$scope.closeAll = function(data) {
@@ -178,7 +179,7 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			list = 'No Photo yet';
 		}
 		else {
-			list = '<ul class="list-group">';
+			list = '<ul class="class="list-group">';
 			for (var i = 0; i < $scope.files.length; i++) {
 				list += '<li class="list-group-item">' + $scope.files[i].name + '<span class="glyphicon glyphicon-remove-sign navbar-right"></span></li>';
 			}

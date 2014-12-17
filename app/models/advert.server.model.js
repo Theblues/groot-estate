@@ -6,12 +6,6 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
-
-function replaceLineBreaks (val) {
-  if ('string' !== typeof val) val = '';
-  return val.replace(/(?:\r\n|\r|\n)/g, '<br />');
-}
-
 /**
  * Advert Schema
  */
@@ -69,8 +63,7 @@ var advertSchema = new Schema({
 	description: {
 		type: String,
 		trim: true,
-		default: '',
-		get: replaceLineBreaks
+		default: ''
 	},
 	photos: {
 		type: Array

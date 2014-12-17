@@ -5,36 +5,36 @@
   </div>
   <div class="panel-body">
 
+  <div class="advert_details">
 		<div class="row">
-				<div class="col-md-2">Surface</div><div><span data-ng-bind="advert.surface"></span></div>
+				<div class="col-md-2 text-primary">Surface (m²)</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.surface"></span></div>
+        <div class="col-md-1"></div>
+				<div class="col-md-2 text-primary">Price (€)</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.price"></span></div>
 		</div>
 		<div class="row">
-				<div class="col-md-2">Price</div><div><span data-ng-bind="advert.price"></span></div>
+        <div class="col-md-2 text-primary">Nb Room</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.room"></span></div>
+				<div class="col-md-1"></div>
+        <div class="col-md-2 text-primary">Energetic</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.energetic"></span></div>
+		</div>
+  </div>
+  <div class="advert_details">
+		<div class="row">
+				<div class="col-md-2 text-primary">Email</div><div class="col-md-4 text-info"><span data-ng-bind="advert.email"></span></div>
+				<div class="col-md-1 text-primary">Phone</div><div class="col-md-2 text-info"><span data-ng-bind="advert.phone"></span></div>
 		</div>
 		<div class="row">
-				<div class="col-md-2">Nb Room</div><div><span data-ng-bind="advert.room"></span></div>
+				<div class="col-md-2 text-primary">Address</div><div class="col-md-7 text-info"><span data-ng-bind="advert.address"></span></div>
 		</div>
 		<div class="row">
-				<div class="col-md-2">Energetic</div><div><span data-ng-bind="advert.energetic"></span></div>
+        <div class="col-md-2 text-primary">Zip Code</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.zip_code"></span></div>
+				<div class="col-md-1 text-primary">City</div><div class="col-md-4 text-info text-right"><span data-ng-bind="advert.city"></span></div>
 		</div>
+  </div>
+  <div class="advert_details">
 		<div class="row">
-				<div class="col-md-2">Email</div><div><span data-ng-bind="advert.email"></span></div>
+				<div class="col-md-2 text-primary">Description</div><div class="col-md-7 text-info"><span data-ng-bind-html="advert.description"></span></div>
 		</div>
-		<div class="row">
-				<div class="col-md-2">Phone</div><div><span data-ng-bind="advert.phone"></span></div>
-		</div>
-		<div class="row">
-				<div class="col-md-2">Address</div><div><span data-ng-bind="advert.address"></span></div>
-		</div>
-		<div class="row">
-				<div class="col-md-2">Zip Code</div><div><span data-ng-bind="advert.zip_code"></span></div>
-		</div>
-		<div class="row">
-				<div class="col-md-2">City</div><div><span data-ng-bind="advert.city"></span></div>
-		</div>
-		<div class="row">
-				<div class="col-md-2">Description</div><div><span data-ng-bind="advert.description"></span></div>
-		</div>
+  </div>
 				<div>Photos : <span data-ng-bind="advert.photos"></span></div>
   </div>
 	<div class="panel-footer">
