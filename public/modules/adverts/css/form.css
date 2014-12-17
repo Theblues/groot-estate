@@ -22,9 +22,10 @@
 
 .popup-building-alert {
     position: absolute;
-    width: 70%;
-    top: 30%;
-    left: 10%;
+    width: 1140px;
+    top: 27%;
+    margin-left: auto;
+    margin-right: auto;
     opacity: 0.9;
     border-radius: 5px;
     -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, .25);
