@@ -179,7 +179,7 @@ function($scope, $stateParams, $location, Authentication, Adverts, AdvertsByIdMa
 			list = 'No Photo yet';
 		}
 		else {
-			list = '<ul class="class="list-group">';
+			list = '<ul class="list-group">';
 			for (var i = 0; i < $scope.files.length; i++) {
 				list += '<li class="list-group-item">' + $scope.files[i].name + '<span class="glyphicon glyphicon-remove-sign navbar-right"></span></li>';
 			}

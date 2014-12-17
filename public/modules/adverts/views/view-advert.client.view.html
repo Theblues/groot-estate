@@ -1,58 +1,77 @@
 <div class="panel panel-info">
-  <div class="panel-heading">
-		<button data-ng-click="closeAll(this)" type="button" class="close pull-right"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    <h3 class="panel-title" data-ng-bind="advert.title"></h3>
-  </div>
-  <div class="panel-body">
+    <div class="panel-heading">
+        <button data-ng-click="closeAll(this)" type="button" class="close pull-right"><span
+                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="panel-title" data-ng-bind="advert.title"></h3>
+    </div>
+    <div class="panel-body">
+        <span class="text-primary"><h4>Estate Informations</h4></span>
+        <div class="advert_details">
+            <div class="row">
+                <div class="col-md-2 text-header">Surface (m²)</div>
+                <div class="col-md-3 text-info"><span data-ng-bind="advert.surface"></span></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 text-header">Price (€)</div>
+                <div class="col-md-3 text-info"><span data-ng-bind="advert.price"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 text-header">Nb Room</div>
+                <div class="col-md-3 text-info"><span data-ng-bind="advert.room"></span></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 text-header">Energetic</div>
+                <div class="col-md-3 text-info"><span data-ng-bind="advert.energetic"></span></div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-2 text-header">Address</div>
+                <div class="col-md-9 text-info"><span data-ng-bind="advert.address"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 text-header">Zip Code</div>
+                <div class="col-md-3 text-info"><span data-ng-bind="advert.zip_code"></span></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 text-header">City</div>
+                <div class="col-md-3 text-info"><span data-ng-bind="advert.city"></span></div>
+            </div>
+        </div>
+        <div class="text-primary"><h4>Contact</h4></div>
+        <div class="advert_details">
+            <div class="row">
+                <div class="col-md-2 text-header">Email</div>
+                <div class="col-md-3 text-info"><span data-ng-bind="advert.email"></span></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 text-header">Phone</div>
+                <div class="col-md-3 text-info"><span data-ng-bind="advert.phone"></span></div>
+            </div>
+        </div>
+        <div class="text-primary"><h4>Additional informations</h4></div>
+        <div class="advert_details">
+            <div class="row">
+                <div class="col-md-2 text-header">Description : </div>
+                <div class="col-md-9 text-info"><span data-ng-bind-html="advert.description"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 text-header">Photos : <span data-ng-bind="advert.photos"></span></div>
+            </div>
+        </div>
 
-  <div class="advert_details">
-		<div class="row">
-				<div class="col-md-2 text-primary">Surface (m²)</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.surface"></span></div>
-        <div class="col-md-1"></div>
-				<div class="col-md-2 text-primary">Price (€)</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.price"></span></div>
-		</div>
-		<div class="row">
-        <div class="col-md-2 text-primary">Nb Room</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.room"></span></div>
-				<div class="col-md-1"></div>
-        <div class="col-md-2 text-primary">Energetic</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.energetic"></span></div>
-		</div>
-  </div>
-  <div class="advert_details">
-		<div class="row">
-				<div class="col-md-2 text-primary">Email</div><div class="col-md-4 text-info"><span data-ng-bind="advert.email"></span></div>
-				<div class="col-md-1 text-primary">Phone</div><div class="col-md-2 text-info"><span data-ng-bind="advert.phone"></span></div>
-		</div>
-		<div class="row">
-				<div class="col-md-2 text-primary">Address</div><div class="col-md-7 text-info"><span data-ng-bind="advert.address"></span></div>
-		</div>
-		<div class="row">
-        <div class="col-md-2 text-primary">Zip Code</div><div class="col-md-2 text-info text-right"><span data-ng-bind="advert.zip_code"></span></div>
-				<div class="col-md-1 text-primary">City</div><div class="col-md-4 text-info text-right"><span data-ng-bind="advert.city"></span></div>
-		</div>
-  </div>
-  <div class="advert_details">
-		<div class="row">
-				<div class="col-md-2 text-primary">Description</div><div class="col-md-7 text-info"><span data-ng-bind-html="advert.description"></span></div>
-		</div>
-  </div>
-				<div>Photos : <span data-ng-bind="advert.photos"></span></div>
-  </div>
-	<div class="panel-footer">
+    </div>
+    <div class="panel-footer">
 
-	<div class="pull-right" data-ng-show="authentication.user._id == advert.user._id">
-		<a class="btn btn-primary" data-ng-click="viewBuilding.show=false; editBuilding.show=true">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove()">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<div class="pull-left">
-	<small>
-		<em class="text-muted">
-			Posted by <span data-ng-bind="advert.user.displayName"></span>
-		</em>
-	</small>
-	</div>
-	</div>
+        <div class="pull-right" data-ng-show="authentication.user._id == advert.user._id">
+            <a class="btn btn-primary" data-ng-click="viewBuilding.show=false; editBuilding.show=true">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a class="btn btn-primary" data-ng-click="remove()">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
+        </div>
+        <div class="pull-left">
+            <small>
+                <em class="text-muted">
+                    Posted by <span data-ng-bind="advert.user.displayName"></span>
+                </em>
+            </small>
+        </div>
+    </div>
 </div>
