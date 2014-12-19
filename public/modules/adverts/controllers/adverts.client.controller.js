@@ -11,7 +11,7 @@ angular.module('adverts').controller('AdvertsController', ['$scope', '$statePara
             $scope.messageClass = 'info';
             $scope.files = [];
             $scope.classes = '';
-            $scope.advert_surface = 0;
+            $scope.advert_surface = '';
         };
         // Create new Advert
         $scope.create = function () {
@@ -134,6 +134,7 @@ angular.module('adverts').controller('AdvertsController', ['$scope', '$statePara
             $scope.advert = '';
             $scope.message = '';
             $scope.messageClass = 'info';
+            $scope.advert_surface = '';
             $scope.files = [];
             $scope.listAddPhoto();
             $scope.viewBuilding.show = false;
@@ -257,7 +258,7 @@ angular.module('adverts').controller('AdvertsController', ['$scope', '$statePara
             for (i = 0; i < nodes.length - 1; i++) {
                 somme += Math.abs(nodes[i][0] * nodes[i + 1][1] - nodes[i + 1][0] * nodes[i][1]);
             }
-            attributes.area = somme / 2;
+            attributes.area = somme / 200;
             attributes.shapeType = 'building';
 
             building.getShapeType = function () {
@@ -338,4 +339,5 @@ angular.module('adverts').controller('AdvertsController', ['$scope', '$statePara
             }
             return shape;
         };
-    }]);
+    }
+]);
