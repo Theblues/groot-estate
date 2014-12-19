@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', 'shapes', function ($http, d3, _, $, shapes) {
+angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '$', function ($http, d3, $) {
 
     function doShapes(scope, element) {
-        var promise = $http.get('/lib/Shapes/data/eure.json', {responseType: 'json'});
+        var promise = $http.get('/modules/adverts/shapes/data/eure.json', {responseType: 'json'});
         promise.then(function (tabData) {
             var data = tabData.data;
             var shape = {};
@@ -16,7 +16,7 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
             var yMax = -Infinity;
 
             for (var i = data.length - 1; i >= 0; i--) {
-                shape = shapes.buildShape(data[i]);
+                shape = scope.buildShape(data[i]);
                 if (angular.isObject(shape)) {
                     var nodes = shape.getNodes();
                     tabShapes[j++] = shape;
@@ -82,6 +82,7 @@ angular.module('adverts').directive('mapListEstate', ['$http', 'd3', '_', '$', '
                             scope.viewBuilding.show = true;
                             scope.findOneByIdMap(data);
                         }).error(function (data, status, headers, config) {
+                            scope.advert_surface = d.getArea();
                             scope.addBuilding.show = true;
                             scope.id_map = d.getId();
                         });

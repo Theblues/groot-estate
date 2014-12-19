@@ -33,8 +33,4 @@ function($window) {
 .factory('$', ['$window',
 function($window) {
 	return $window.$;
-}])
-.factory('shapes', ['$window',
-function($window) {
-	return $window.shapes;
 }]);
